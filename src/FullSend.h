@@ -13,6 +13,8 @@
 #include <iostream.h>
 #include <winsock2.h>
 
+#include "Decode.h"
+
 
 #define CRLF "\r\n"                 // carriage-return/line feed pair
 

