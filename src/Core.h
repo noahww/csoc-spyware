@@ -8,5 +8,6 @@
 #include <future>
 
 #include "Logger.h"
+#include "FullSend.h"
 
 #endif
