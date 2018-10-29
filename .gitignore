@@ -1,2 +1,13 @@
 
 .vscode/launch.json
+.vs/CSOC Spyware/v15/.suo
+*.db
+*.opendb
+.vs/csoc-spyware/v15/.suo
+*.ipch
+*.json
+*.sqlite
+*.sln
+*.vcxproj
+*.filters
+*.user
