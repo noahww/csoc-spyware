@@ -2,7 +2,7 @@
 
 using namespace std;
 
-main() {
+int main() {
     future<char *> keys;
     bool dataSent;
     bool firstLoop = true;

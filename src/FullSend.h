@@ -1,7 +1,6 @@
 #ifndef FULL_SEND_H
 #define FULL_SEND_H
 
-#include <windows.h>
 #include <time.h>
 #include <string>
 #include <fstream>
@@ -10,7 +9,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <winsock2.h>
-//#include <ws2tcpip.h>
+#include <windows.h>
 
 #include "Decode.h"
 

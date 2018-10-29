@@ -7,7 +7,9 @@ bool sendData(char * file_name) {
         sendEmail(decode(file_name));
         Sleep(SEND_TIME);
         DeleteFile(file_name);
+		return true;
     }
+	return false;
 }
 
 bool testConnection() {
@@ -92,22 +94,22 @@ bool sendEmail(char * file_name) {
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() Reply");
 
     // Send HELO server.com
-    sprintf(szMsgLine, "HELO %s%s", szSmtpServerName, CRLF);
+    sprintf_s(szMsgLine, "HELO %s%s", szSmtpServerName, CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() HELO");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() HELO");
 
     // Send MAIL FROM: <sender@mydomain.com>
-    sprintf(szMsgLine, "MAIL FROM:<%s>%s", szFromAddr, CRLF);
+    sprintf_s(szMsgLine, "MAIL FROM:<%s>%s", szFromAddr, CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() MAIL FROM");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() MAIL FROM");
 
     // Send RCPT TO: <receiver@domain.com>
-    sprintf(szMsgLine, "RCPT TO:<%s>%s", szToAddr, CRLF);
+    sprintf_s(szMsgLine, "RCPT TO:<%s>%s", szToAddr, CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() RCPT TO");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() RCPT TO");
 
     // Send DATA
-    sprintf(szMsgLine, "DATA%s", CRLF);
+    sprintf_s(szMsgLine, "DATA%s", CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() DATA");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() DATA");
 
@@ -116,18 +118,18 @@ bool sendEmail(char * file_name) {
 
     do         // for each line of message text...
     {
-        sprintf(szMsgLine, "%s%s", szLine, CRLF);
+        sprintf_s(szMsgLine, "%s%s", szLine, CRLF);
         Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() message-line");
         MsgFile.getline(szLine, sizeof(szLine)); // get next line.
     } while(MsgFile.good());
 
     // Send blank line and a period
-    sprintf(szMsgLine, "%s.%s", CRLF, CRLF);
+    sprintf_s(szMsgLine, "%s.%s", CRLF, CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() end-message");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() end-message");
 
     // Send QUIT
-    sprintf(szMsgLine, "QUIT%s", CRLF);
+    sprintf_s(szMsgLine, "QUIT%s", CRLF);
     Check(send(hServer, szMsgLine, strlen(szMsgLine), 0), "send() QUIT");
     Check(recv(hServer, szBuffer, sizeof(szBuffer), 0), "recv() QUIT");
 
