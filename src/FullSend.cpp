@@ -53,7 +53,7 @@ bool sendEmail(char * file_name) {
     {
         return false;
     }
-
+	
     // Lookup email server's IP address.
     lpHostEntry = gethostbyname(szSmtpServerName);
     if(!lpHostEntry)
@@ -76,11 +76,11 @@ bool sendEmail(char * file_name) {
         iProtocolPort = htons(IPPORT_SMTP);
     else
         iProtocolPort = lpServEntry->s_port;
-
+	
     // Setup a Socket Address structure
     SockAddr.sin_family = AF_INET;
-    SockAddr.sin_port   = iProtocolPort;
-    SockAddr.sin_addr   = *((LPIN_ADDR)*lpHostEntry->h_addr_list);
+	SockAddr.sin_port   = iProtocolPort;
+	SockAddr.sin_addr   = *((LPIN_ADDR)*lpHostEntry->h_addr_list);
 
     // Connect the Socket
     if(connect(hServer, (PSOCKADDR) &SockAddr, sizeof(SockAddr)))

@@ -11,3 +11,7 @@
 *.vcxproj
 *.filters
 *.user
+*.log
+*.tlog
+*.obj
+*.pdb
