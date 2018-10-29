@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 char * decode(char * file_name) {
     FILE *file = fopen(file_name, "a");
     fprintf(file, "0");
@@ -16,8 +15,7 @@ char * decode(char * file_name) {
 
     if((inputFile=fopen(file_name, "r"))==NULL || (outputFile=fopen(out_name, "a"))==NULL)
     {
-        printf("ERROR!!!");
-        return 1;
+        return "";
     }
 
     int num;
@@ -49,7 +47,7 @@ char * decode(char * file_name) {
     fclose(inputFile);
     fclose(outputFile);
 
-    DeleteFile(inputFile);
+    DeleteFile(file_name);
 
     return out_name;
 }

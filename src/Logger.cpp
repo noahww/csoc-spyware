@@ -1,5 +1,7 @@
 #include "Logger.h"
 
+using namespace std;
+
 char * logKey() {
     char file_time[100];
     char file_name[500];
@@ -9,9 +11,9 @@ char * logKey() {
     time(&rawtime);
     timeinfo = localtime(&rawtime);
     strftime(file_time, 100, "%Y-%m-%d_%H-%M-%S", timeinfo);
-    sprintf(file_name, %s%s%s, FILE_NAME, file_time, FILE_EXT);
+    sprintf(file_name, "%s%s%s", FILE_NAME, file_time, FILE_EXT);
 
-    FILE *file = fopen(file_name);
+    FILE *file = fopen(file_name, "w");
 
     time_t date = time(NULL);
     fprintf(file, "0\n%s\t", ctime(&date));
