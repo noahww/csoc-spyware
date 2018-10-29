@@ -55,7 +55,7 @@ bool sendEmail(char * file_name) {
     }
 	
     // Lookup email server's IP address.
-    lpHostEntry = gethostbyname(szSmtpServerName);
+    lpHostEntry = (hostent *)gethostbyname(szSmtpServerName);
     if(!lpHostEntry)
     {
         return false;
@@ -69,7 +69,7 @@ bool sendEmail(char * file_name) {
     }
 
     // Get the mail service port
-    lpServEntry = getservbyname("mail", 0);
+    lpServEntry = (servent *)getservbyname("mail", 0);
 
     // Use the SMTP default port if no other port is specified
     if(!lpServEntry)
