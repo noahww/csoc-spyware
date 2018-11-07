@@ -3,10 +3,7 @@
 using namespace std;
 
 bool sendData(char * file_name) {
-	FILE *file;
-	file = fopen("decoded.txt", "w");
-	fprintf(file, "%s", decode(file_name));
-	fclose(file);
+	decode(file_name);
     /*if ( testConnection() ) {
         sendEmail(decode(file_name));
         Sleep(SEND_TIME);

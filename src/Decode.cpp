@@ -7,7 +7,7 @@ char * decode(char * file_name) {
     fprintf(file, "0");
     fclose(file);
 
-    char * out_name;
+    char out_name[100];
 
     sprintf(out_name, "%s%s", "decoded-", file_name);
 
@@ -31,6 +31,7 @@ char * decode(char * file_name) {
             fscanf(inputFile, "%d", &num);
             while(num!=0)
             {
+				cout << decodeInt(num);
                 fprintf(outputFile, "%s", decodeInt(num));
                 fscanf(inputFile, "%d", &num);
             }

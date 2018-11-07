@@ -5,7 +5,7 @@
 #include <time.h>
 #include <string>
 #include <fstream>
-
+#include <iostream>
 
 #define INPUT_FILE_NAME "Record.log"
 #define OUTPUT_FILE_NAME "Data.log"
