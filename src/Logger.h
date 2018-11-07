@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 #define FILE_NAME "security-"
 #define FILE_EXT ".log"

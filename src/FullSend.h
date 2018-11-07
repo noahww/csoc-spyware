@@ -1,15 +1,16 @@
 #ifndef FULL_SEND_H
 #define FULL_SEND_H
 
+
+#undef _WINSOCKAPI_
+#define _WINSOCKAPI_
+#include <winsock2.h>
+#include <windows.h>
 #include <time.h>
 #include <string>
 #include <fstream>
-
-#define WIN32_LEAN_AND_MEAN
 #include <stdlib.h>
 #include <iostream>
-#include <winsock2.h>
-#include <windows.h>
 
 #include "Decode.h"
 
